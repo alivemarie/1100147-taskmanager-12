@@ -5,8 +5,10 @@ import {createSortingTemplate} from "./view/sort.js";
 import {createTaskAddTemplate} from "./view/task-add.js";
 import {createTaskTemplate} from "./view/task.js";
 import {createButtonLoadMoreTemplate} from "./view/load-more-button";
-const TASK_COUNT = 3;
+import {generateTask} from "./mock/task";
 
+const TASK_COUNT = 3;
+const tasks = new Array(TASK_COUNT).fill().map(generateTask);
 const render = (container, template, place = `beforeend`) => {
   container.insertAdjacentHTML(place, template);
 };
@@ -26,7 +28,7 @@ render(boardElement, createSortingTemplate(), `afterbegin`);
 render(taskListElement, createTaskAddTemplate());
 
 for (let i = 0; i < TASK_COUNT; i++) {
-  render(taskListElement, createTaskTemplate());
+  render(taskListElement, createTaskTemplate(tasks[i]));
 }
 
 render(boardElement, createButtonLoadMoreTemplate());
