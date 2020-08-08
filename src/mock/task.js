@@ -18,7 +18,7 @@ const getRandomColor = () => {
 };
 
 const generateDate = () => {
-  const isDate = Boolean(getRandomInteger());
+  const isDate = Boolean(getRandomInteger(0, 1));
 
   if (!isDate) {
     return null;
@@ -37,9 +37,9 @@ const generateRepeating = () => {
   return {
     mo: false,
     tu: false,
-    we: Boolean(getRandomInteger()),
+    we: Boolean(getRandomInteger(0, 1)),
     th: false,
-    fr: Boolean(getRandomInteger()),
+    fr: Boolean(getRandomInteger(0, 1)),
     sa: false,
     su: false
   };
@@ -64,7 +64,7 @@ export const generateTask = () => {
     dueDate,
     repeating,
     color: getRandomColor(),
-    isArchive: Boolean(getRandomInteger()),
-    isFavorite: Boolean(getRandomInteger())
+    isArchive: Boolean(getRandomInteger(0, 1)),
+    isFavorite: Boolean(getRandomInteger(0, 1))
   };
 };

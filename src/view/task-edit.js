@@ -12,7 +12,7 @@ ${dueDate !== null ? `<fieldset class="card__date-deadline">
           type="text"
           placeholder=""
           name="date"
-          value="${humanizeTaskDueDate(dueDate)})}"
+          value="${humanizeTaskDueDate(dueDate)}"
         />
       </label>
     </fieldset>` : ``}
