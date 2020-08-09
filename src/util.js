@@ -1,3 +1,9 @@
+const SECOND = 1000;
+const MINUTE = 60;
+const HOUR = 60;
+const DAY = 24;
+const DUE_DATE_IS_NULL = 1;
+
 export const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
@@ -12,23 +18,13 @@ const getCurrentDate = () => {
   return new Date(currentDate);
 };
 
-export const isTaskExpired = (dueDate) => {
+export const getDaysToDeadline = (dueDate) => {
   if (dueDate === null) {
-    return false;
+    return DUE_DATE_IS_NULL;
   }
   const currentDate = getCurrentDate();
 
-  return currentDate.getTime() > dueDate.getTime();
-};
-
-export const isTaskExpiringToday = (dueDate) => {
-  if (dueDate === null) {
-    return false;
-  }
-
-  const currentDate = getCurrentDate();
-
-  return currentDate.getTime() === dueDate.getTime();
+  return (currentDate.getTime() - dueDate.getTime()) / SECOND / MINUTE / HOUR / DAY;
 };
 
 export const isTaskRepeating = (repeating) => {

@@ -1,4 +1,4 @@
-import {isTaskExpired, isTaskRepeating, humanizeTaskDueDate} from "../util.js";
+import {getDaysToDeadline, isTaskRepeating, humanizeTaskDueDate} from "../util.js";
 
 export const createTaskTemplate = (task) => {
   const {color, description, dueDate, repeating, isArchive, isFavorite} = task;
@@ -7,7 +7,7 @@ export const createTaskTemplate = (task) => {
     ? humanizeTaskDueDate(dueDate)
     : ``;
 
-  const deadlineClassName = isTaskExpired(dueDate)
+  const deadlineClassName = getDaysToDeadline(dueDate) <= 0
     ? `card--deadline`
     : ``;
 
