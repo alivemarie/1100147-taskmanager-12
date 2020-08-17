@@ -1,4 +1,4 @@
-import {isTaskRepeating, getDaysToDeadline} from "../util.js";
+import {isTaskRepeating, getDaysToDeadline} from "../utils.js";
 
 const taskToFilterMap = {
   all: (tasks) => tasks.filter((task) => !task.isArchive).length,
