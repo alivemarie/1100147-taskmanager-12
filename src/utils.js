@@ -3,6 +3,32 @@ const MINUTE = 60;
 const HOUR = 60;
 const DAY = 24;
 const DUE_DATE_IS_NULL = 1;
+export const RenderPosition = {
+  AFTERBEGIN: `afterbegin`,
+  BEFOREEND: `beforeend`
+};
+
+export const render = (container, element, place = RenderPosition.BEFOREEND) => {
+  switch (place) {
+    case RenderPosition.AFTERBEGIN:
+      container.prepend(element);
+      break;
+    case RenderPosition.BEFOREEND:
+      container.append(element);
+      break;
+  }
+};
+
+export const renderTemplate = (container, template, place = `beforeend`) => {
+  container.insertAdjacentHTML(place, template);
+};
+
+export const createElement = (template) => {
+  const newElement = document.createElement(`div`); // 1
+  newElement.innerHTML = template; // 2
+
+  return newElement.firstChild; // 3
+};
 
 export const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
