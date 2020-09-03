@@ -1,11 +1,11 @@
 import AbstractView from "./abstract.js";
-import {getDaysToDeadline, isTaskRepeating, humanizeTaskDueDate} from "../utils/task.js";
+import {getDaysToDeadline, isTaskRepeating, formatTaskDueDate} from "../utils/task.js";
 
 const createTaskTemplate = (task) => {
   const {color, description, dueDate, repeating, isArchive, isFavorite} = task;
 
   const date = dueDate !== null
-    ? humanizeTaskDueDate(dueDate)
+    ? formatTaskDueDate(dueDate)
     : ``;
 
   const deadlineClassName = getDaysToDeadline(dueDate) <= 0
